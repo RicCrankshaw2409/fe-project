@@ -20,3 +20,15 @@ export const getReviews = () => {
     return response.data.reviews;
   });
 };
+
+export const getComments = (review_id) => {
+  return gamesApi.get(`/reviews/${review_id}/comments`).then((response) => {
+    return response.data.comments;
+  });
+};
+
+export const getCurrentReview = (review_id) => {
+  return gamesApi.get(`reviews/${review_id}`).then((response) => {
+    return response.data.review;
+  });
+};
