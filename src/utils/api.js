@@ -14,3 +14,9 @@ export const getCategories = () => {
       console.log(err);
     });
 };
+
+export const getReviews = () => {
+  return gamesApi.get("/reviews").then((response) => {
+    return response.data.reviews;
+  });
+};
