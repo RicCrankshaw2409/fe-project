@@ -5,10 +5,10 @@ function NavBar() {
     <nav>
       <h1>Board Game Reviews</h1>
       <section id="nav-buttons">
-        <NavLink to="/signin">
+        <NavLink to="/">
           <button>Sign-In</button>
         </NavLink>
-        <NavLink to="/signin">
+        <NavLink to="/">
           <button>Sign-out</button>
         </NavLink>
       </section>

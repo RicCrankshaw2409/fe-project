@@ -3,11 +3,11 @@ import { getCategories } from "../utils/api";
 import { Link } from "react-router-dom";
 
 function CategoryBar() {
-  const [categories, setCatagories] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     getCategories().then((results) => {
-      setCatagories(results);
+      setCategories(results);
     });
   }, []);
 

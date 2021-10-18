@@ -32,3 +32,9 @@ export const getCurrentReview = (review_id) => {
     return response.data.review;
   });
 };
+
+export const getUsers = () => {
+  return gamesApi.get("/users").then((response) => {
+    return response.data.result;
+  });
+};
