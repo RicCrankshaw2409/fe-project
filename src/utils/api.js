@@ -15,11 +15,16 @@ export const getCategories = () => {
     });
 };
 
-export const getReviews = (sortBy) => {
-  let path;
-  sortBy ? (path = `/reviews?sort_by=${sortBy}`) : (path = `/reviews`);
+export const getReviews = (sortBy, category) => {
+  // category ? (path += `?category=${category}`) : null;
+
   return gamesApi
-    .get(path)
+    .get("/reviews", {
+      params: {
+        category,
+        sort_by: sortBy,
+      },
+    })
     .then((response) => {
       return response.data.reviews;
     })
@@ -47,7 +52,6 @@ export const getUsers = () => {
 };
 
 export const uploadComments = (commentInput, currentUser, review_id) => {
-  console.log(commentInput, currentUser, review_id);
   return gamesApi
     .post(`/reviews/${review_id}/comments`, {
       username: currentUser,
@@ -59,4 +63,11 @@ export const uploadComments = (commentInput, currentUser, review_id) => {
     .catch((err) => {
       console.dir(err);
     });
+};
+
+export const patchReview = (review_id) => {
+  return gamesApi
+    .patch(`/reviews/${review_id}`, { inc_votes: 1 })
+    .then(() => {})
+    .catch((err) => {});
 };

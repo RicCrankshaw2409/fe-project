@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { getComments, getCurrentReview, uploadComments } from "../utils/api";
+import {
+  getComments,
+  getCurrentReview,
+  uploadComments,
+  patchReview,
+} from "../utils/api";
 
 function CommentsPage({ currentUser }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentReview, setCurrentReview] = useState({});
   const [commentInput, setCommentInput] = useState("");
+  const [newLikes, setNewLikes] = useState(0);
 
   const { review_id } = useParams();
 
@@ -29,6 +35,11 @@ function CommentsPage({ currentUser }) {
     uploadComments(commentInput, currentUser, review_id);
   };
 
+  const likeReview = (e) => {
+    setNewLikes((newLikes) => newLikes + 1);
+    patchReview(review_id);
+  };
+
   if (isLoading) return <p>Loading...</p>;
 
   return (
@@ -39,7 +50,9 @@ function CommentsPage({ currentUser }) {
         <h2>{currentReview.owner}</h2>
         <h2>{currentReview.created_at}</h2>
         <img src={currentReview.review_img_url} alt="review"></img>
-        <button>{currentReview.votes}</button>
+        <button onClick={likeReview}>
+          Kudos: {currentReview.votes + newLikes}
+        </button>
       </div>
       <div id="comments_box">
         {comments.map((comment) => {

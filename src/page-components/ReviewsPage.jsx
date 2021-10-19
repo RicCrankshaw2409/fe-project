@@ -11,7 +11,7 @@ function ReviewsPage() {
 
   useEffect(() => {
     setIsLoading(true);
-    getReviews(sortBy)
+    getReviews(sortBy, category)
       .then((results) => {
         setReviews(results);
         setIsLoading(false);
@@ -27,45 +27,19 @@ function ReviewsPage() {
     setSortBy(e.target.value);
   };
 
-  console.log(sortBy);
-
-  const filteredReviews = (category, reviews) => {
-    const filteredReviews = reviews.filter((review) => {
-      return review.category === category;
-    });
-
-    const filteredReviewBox = filteredReviews.map((review, index) => {
-      return (
-        <div className="review-box">
-          <form>
-            <label htmlFor="review-sort"></label>
-            <select onChange={handleSortBy} name="review-sort" id="review-sort">
-              <option value="created_at">Date</option>
-              <option value="comment_count">Comments</option>
-              <option value="votes">Votes</option>
-            </select>
-          </form>
-          <Link key={index} to={`/comments/${review.review_id}`}>
-            <p>{review.category}</p>
-            <h1>{review.title}</h1>
-            <h2>{review.owner}</h2>
-            <img src={review.review_img_url} alt="review"></img>
-          </Link>
-        </div>
-      );
-    });
-
-    return filteredReviewBox;
-  };
-
   if (isLoading) return <p>Loading...</p>;
 
   return (
     <section>
       <form>
-        <label htmlFor="review-sort"></label>
-        <select onChange={handleSortBy} name="review-sort" id="review-sort">
-          <option selected="selected" disabled={true}>
+        <label htmlFor="review-sort">Sort By</label>
+        <select
+          defaultValue="selected"
+          onChange={handleSortBy}
+          name="review-sort"
+          id="review-sort"
+        >
+          <option value="selected" disabled={true}>
             Select Option
           </option>
           <option value="created_at">Date</option>
@@ -73,20 +47,18 @@ function ReviewsPage() {
           <option value="votes">Votes</option>
         </select>
       </form>
-      {!category
-        ? reviews.map((review, index) => {
-            return (
-              <div className="review-box">
-                <Link key={index} to={`/comments/${review.review_id}`}>
-                  <p>{review.category}</p>
-                  <h1>{review.title}</h1>
-                  <h2>{review.owner}</h2>
-                  <img src={review.review_img_url} alt="review"></img>
-                </Link>
-              </div>
-            );
-          })
-        : filteredReviews(category, reviews)}
+      {reviews.map((review, index) => {
+        return (
+          <div className="review-box">
+            <Link key={index} to={`/comments/${review.review_id}`}>
+              <p>{review.category}</p>
+              <h1>{review.title}</h1>
+              <h2>{review.owner}</h2>
+              <img src={review.review_img_url} alt="review"></img>
+            </Link>
+          </div>
+        );
+      })}
     </section>
   );
 }
