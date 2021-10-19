@@ -15,10 +15,17 @@ export const getCategories = () => {
     });
 };
 
-export const getReviews = () => {
-  return gamesApi.get("/reviews").then((response) => {
-    return response.data.reviews;
-  });
+export const getReviews = (sortBy) => {
+  let path;
+  sortBy ? (path = `/reviews?sort_by=${sortBy}`) : (path = `/reviews`);
+  return gamesApi
+    .get(path)
+    .then((response) => {
+      return response.data.reviews;
+    })
+    .catch((err) => {
+      console.dir(err);
+    });
 };
 
 export const getComments = (review_id) => {

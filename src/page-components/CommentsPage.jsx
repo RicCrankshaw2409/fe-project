@@ -14,7 +14,7 @@ function CommentsPage({ currentUser }) {
     getComments(review_id).then((results) => {
       setComments(results);
     });
-  }, [comments]);
+  }, [comments, review_id]);
 
   useEffect(() => {
     setIsLoading(true);

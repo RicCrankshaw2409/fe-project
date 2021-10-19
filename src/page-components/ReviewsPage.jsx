@@ -6,11 +6,12 @@ import { Link } from "react-router-dom";
 function ReviewsPage() {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [sortBy, setSortBy] = useState(null);
   const { category } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
-    getReviews(category)
+    getReviews(sortBy)
       .then((results) => {
         setReviews(results);
         setIsLoading(false);
@@ -18,7 +19,15 @@ function ReviewsPage() {
       .catch((err) => {
         console.log(err);
       });
-  }, [category]);
+  }, [category, sortBy]);
+
+  const handleSortBy = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+    setSortBy(e.target.value);
+  };
+
+  console.log(sortBy);
 
   const filteredReviews = (category, reviews) => {
     const filteredReviews = reviews.filter((review) => {
@@ -29,11 +38,11 @@ function ReviewsPage() {
       return (
         <div className="review-box">
           <form>
-            <label htmlFor="comment_sort">Sort reviews</label>
-            <select name="" id="">
-              <option>Date</option>
-              <option>Comments</option>
-              <option>Votes</option>
+            <label htmlFor="review-sort"></label>
+            <select onChange={handleSortBy} name="review-sort" id="review-sort">
+              <option value="created_at">Date</option>
+              <option value="comment_count">Comments</option>
+              <option value="votes">Votes</option>
             </select>
           </form>
           <Link key={index} to={`/comments/${review.review_id}`}>
@@ -53,18 +62,21 @@ function ReviewsPage() {
 
   return (
     <section>
+      <form>
+        <label htmlFor="review-sort"></label>
+        <select onChange={handleSortBy} name="review-sort" id="review-sort">
+          <option selected="selected" disabled={true}>
+            Select Option
+          </option>
+          <option value="created_at">Date</option>
+          <option value="comment_count">Comments</option>
+          <option value="votes">Votes</option>
+        </select>
+      </form>
       {!category
         ? reviews.map((review, index) => {
             return (
               <div className="review-box">
-                <form>
-                  <label htmlFor="comment_sort">Sort reviews</label>
-                  <select name="" id="">
-                    <option>Date</option>
-                    <option>Comments</option>
-                    <option>Votes</option>
-                  </select>
-                </form>
                 <Link key={index} to={`/comments/${review.review_id}`}>
                   <p>{review.category}</p>
                   <h1>{review.title}</h1>
