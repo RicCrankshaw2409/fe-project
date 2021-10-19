@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { getComments, getCurrentReview } from "../utils/api";
+import { getComments, getCurrentReview, uploadComments } from "../utils/api";
 
-function CommentsPage() {
+function CommentsPage({ currentUser }) {
   const [comments, setComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [currentReview, setCurrentReview] = useState({});
+  const [commentInput, setCommentInput] = useState("");
 
   const { review_id } = useParams();
 
@@ -12,20 +14,27 @@ function CommentsPage() {
     getComments(review_id).then((results) => {
       setComments(results);
     });
-  }, [review_id]);
+  }, [comments]);
 
   useEffect(() => {
+    setIsLoading(true);
     getCurrentReview(review_id).then((results) => {
       setCurrentReview(results);
+      setIsLoading(false);
     });
   }, [review_id]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    uploadComments(commentInput, currentUser, review_id);
+  };
+
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     <section>
       <div id="current_review_body">
-        <div id="current_review_header">
-          <p>{currentReview.category}</p>
-        </div>
+        <p>{currentReview.category}</p>
         <h1>{currentReview.title}</h1>
         <h2>{currentReview.owner}</h2>
         <h2>{currentReview.created_at}</h2>
@@ -44,10 +53,18 @@ function CommentsPage() {
         })}
       </div>
       <div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <p>Please leave a comment below</p>
           <label htmlFor="comment_input_box"></label>
-          <input id="comment_input_box" type="text-box"></input>
+          <input
+            placeholder="comment..."
+            required
+            onChange={(e) => {
+              setCommentInput(e.target.value);
+            }}
+            id="comment_input_box"
+            type="text-box"
+          ></input>
           <button>Submit</button>
         </form>
       </div>

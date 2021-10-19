@@ -38,3 +38,18 @@ export const getUsers = () => {
     return response.data.result;
   });
 };
+
+export const uploadComments = (commentInput, currentUser, review_id) => {
+  console.log(commentInput, currentUser, review_id);
+  return gamesApi
+    .post(`/reviews/${review_id}/comments`, {
+      username: currentUser,
+      body: commentInput,
+    })
+    .then(() => {
+      console.log("item successfully uploaded");
+    })
+    .catch((err) => {
+      console.dir(err);
+    });
+};

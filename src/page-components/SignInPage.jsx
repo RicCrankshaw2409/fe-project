@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import { getUsers } from "../utils/api";
+import { useHistory } from "react-router-dom";
 
 function SignInPage({ setCurrentUser }) {
   const [userInput, setUserInput] = useState("");
   const [users, setUsers] = useState([]);
+  const [err, setErr] = useState(false);
+
+  const history = useHistory();
 
   useEffect(() => {
     getUsers().then((results) => {
@@ -14,10 +18,19 @@ function SignInPage({ setCurrentUser }) {
     });
   }, []);
 
-  const checkLogIn = (e) => {
+  const checkLogIn = () => {
+    setErr(false);
     if (users.includes(userInput)) {
       setCurrentUser(userInput);
+      history.push("/reviews");
     } else {
+      setErr(true);
+    }
+  };
+
+  const needToSignUp = () => {
+    if (err) {
+      return <p>User not found please sign up below</p>;
     }
   };
 
@@ -28,7 +41,7 @@ function SignInPage({ setCurrentUser }) {
         join the board game community, rate your favourite board games, leave
         reviews and like other users reviews
       </h2>
-      <form onSubmit={checkLogIn()}>
+      <form onSubmit={checkLogIn}>
         <label htmlFor="username">User: </label>
         <input
           id="username"
@@ -40,6 +53,7 @@ function SignInPage({ setCurrentUser }) {
         ></input>
         <button>Sign-In</button>
       </form>
+      <div>{needToSignUp()}</div>
     </section>
   );
 }

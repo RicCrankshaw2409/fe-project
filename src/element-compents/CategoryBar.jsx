@@ -15,7 +15,7 @@ function CategoryBar() {
     <section>
       {categories.map((category, index) => {
         return (
-          <Link key={index} to={`reviews/${category.slug}`}>
+          <Link key={index} to={`/reviews/${category.slug}`}>
             {category.slug}
           </Link>
         );
