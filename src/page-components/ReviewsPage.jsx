@@ -31,6 +31,7 @@ function ReviewsPage() {
 
   return (
     <section>
+      <Link to={`/newreview`}>submit review</Link>
       <form>
         <label htmlFor="review-sort">Sort By</label>
         <select
@@ -49,8 +50,8 @@ function ReviewsPage() {
       </form>
       {reviews.map((review, index) => {
         return (
-          <div className="review-box">
-            <Link key={index} to={`/comments/${review.review_id}`}>
+          <div key={index} className="review-box">
+            <Link to={`/comments/${review.review_id}`}>
               <p>{review.category}</p>
               <h1>{review.title}</h1>
               <h2>{review.owner}</h2>

@@ -71,3 +71,36 @@ export const patchReview = (review_id) => {
     .then(() => {})
     .catch((err) => {});
 };
+
+export const patchComment = (comment_id) => {
+  return gamesApi
+    .patch(`/comments/${comment_id}`, { inc_votes: 1 })
+    .then(() => {})
+    .catch((err) => {});
+};
+
+export const postReview = (
+  title,
+  manufacturer,
+  image,
+  body,
+  category,
+  currentUser
+) => {
+  console.log(title, manufacturer, image, body, category, currentUser);
+  return gamesApi
+    .post(`/reviews`, {
+      title: `${title}`,
+      designer: `${manufacturer}`,
+      owner: `${currentUser}`,
+      review_img_url: `${image}`,
+      review_body: `${body}`,
+      category: `${category}`,
+    })
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.dir(err);
+    });
+};

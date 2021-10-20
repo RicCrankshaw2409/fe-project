@@ -1,15 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getCategories } from "../utils/api";
 import { Link } from "react-router-dom";
 
-function CategoryBar() {
-  const [categories, setCategories] = useState([]);
-
+function CategoryBar({ setCategories, categories }) {
   useEffect(() => {
     getCategories().then((results) => {
       setCategories(results);
     });
-  }, []);
+  }, [setCategories]);
 
   return (
     <section>

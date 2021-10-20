@@ -5,6 +5,7 @@ import {
   getCurrentReview,
   uploadComments,
   patchReview,
+  patchComment,
 } from "../utils/api";
 
 function CommentsPage({ currentUser }) {
@@ -12,7 +13,8 @@ function CommentsPage({ currentUser }) {
   const [isLoading, setIsLoading] = useState(true);
   const [currentReview, setCurrentReview] = useState({});
   const [commentInput, setCommentInput] = useState("");
-  const [newLikes, setNewLikes] = useState(0);
+  const [newReviewLikes, setNewReviewLikes] = useState(0);
+  const [newCommentLikes, setNewCommentLikes] = useState(0);
 
   const { review_id } = useParams();
 
@@ -20,7 +22,7 @@ function CommentsPage({ currentUser }) {
     getComments(review_id).then((results) => {
       setComments(results);
     });
-  }, [comments, review_id]);
+  }, [review_id]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -35,9 +37,14 @@ function CommentsPage({ currentUser }) {
     uploadComments(commentInput, currentUser, review_id);
   };
 
-  const likeReview = (e) => {
-    setNewLikes((newLikes) => newLikes + 1);
+  const likeReview = () => {
+    setNewReviewLikes((newReviewLikes) => newReviewLikes + 1);
     patchReview(review_id);
+  };
+
+  const likeComment = () => {
+    setNewCommentLikes((newCommentLikes) => newCommentLikes + 1);
+    patchComment(review_id);
   };
 
   if (isLoading) return <p>Loading...</p>;
@@ -51,17 +58,19 @@ function CommentsPage({ currentUser }) {
         <h2>{currentReview.created_at}</h2>
         <img src={currentReview.review_img_url} alt="review"></img>
         <button onClick={likeReview}>
-          Kudos: {currentReview.votes + newLikes}
+          Kudos: {currentReview.votes + newReviewLikes}
         </button>
       </div>
       <div id="comments_box">
-        {comments.map((comment) => {
+        {comments.map((comment, index) => {
           return (
-            <>
+            <section key={index}>
               <h1>{comment.author}</h1>
               <p>{comment.body}</p>
-              <button>{comment.votes}</button>
-            </>
+              <button onClick={likeComment} value={comment.comment_id}>
+                {comment.votes + newCommentLikes}
+              </button>
+            </section>
           );
         })}
       </div>
