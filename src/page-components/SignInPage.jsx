@@ -50,6 +50,7 @@ function SignInPage({ setCurrentUser }) {
           }}
           required
           type="text"
+          placeholder="Guest? user = tickle122"
         ></input>
         <button>Sign-In</button>
       </form>
