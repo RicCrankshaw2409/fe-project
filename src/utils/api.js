@@ -37,8 +37,10 @@ export const getComments = (review_id) => {
   });
 };
 
-export const getCurrentReview = (review_id) => {
-  return gamesApi.get(`reviews/${review_id}`).then((response) => {
+export const getCurrentReview = (review_id, createdReviewId) => {
+  let path;
+  createdReviewId ? (path = createdReviewId) : (path = review_id);
+  return gamesApi.get(`reviews/${path}`).then((response) => {
     return response.data.review;
   });
 };
@@ -77,28 +79,14 @@ export const patchComment = (comment_id) => {
     .catch((err) => {});
 };
 
-export const postReview = (
-  title,
-  manufacturer,
-  image,
-  body,
-  category,
-  currentUser
-) => {
-  console.log(title, manufacturer, image, body, category, currentUser);
-  return gamesApi
-    .post(`/reviews`, {
-      title: `${title}`,
-      designer: `${manufacturer}`,
-      owner: `${currentUser}`,
-      review_img_url: `${image}`,
-      review_body: `${body}`,
-      category: `${category}`,
-    })
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((err) => {
-      console.dir(err);
-    });
+export const postReview = (reviewInput, currentUser) => {
+  const { title, image, body, category, manufacturer } = reviewInput;
+  return gamesApi.post(`/reviews`, {
+    title: `${title}`,
+    designer: `${manufacturer}`,
+    owner: `${currentUser}`,
+    review_img_url: `${image}`,
+    review_body: `${body}`,
+    category: `${category}`,
+  });
 };

@@ -1,16 +1,20 @@
 import { useState } from "react";
 import { postReview } from "../utils/api";
 
-function NewReviewForm({ currentUser, categories }) {
-  const [title, setTitle] = useState("");
-  const [image, setImage] = useState("");
-  const [body, setBody] = useState("");
-  const [category, setCategory] = useState("");
-  const [manufacturer, setManufacturer] = useState("");
+function NewReviewForm({ currentUser, categories, setCreatedReviewId }) {
+  const [reviewInput, setReviewInput] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postReview(title, manufacturer, image, body, category, currentUser);
+    setReviewInput({});
+    postReview(reviewInput, currentUser)
+      .then((result) => {
+        console.log(result.data.review.review_id);
+        setCreatedReviewId(result.data.review.review_id);
+      })
+      .catch((err) => {
+        console.dir(err);
+      });
   };
 
   return (
@@ -19,7 +23,11 @@ function NewReviewForm({ currentUser, categories }) {
       <label>Review Title</label>
       <input
         onChange={(e) => {
-          setTitle(e.target.value);
+          setReviewInput((currentInput) => {
+            const tempInput = { ...currentInput };
+            tempInput.title = e.target.value;
+            return tempInput;
+          });
         }}
         required
         type="text"
@@ -27,7 +35,11 @@ function NewReviewForm({ currentUser, categories }) {
       <label>Image (URL)</label>
       <input
         onChange={(e) => {
-          setImage(e.target.value);
+          setReviewInput((currentInput) => {
+            const tempInput = { ...currentInput };
+            tempInput.image = e.target.value;
+            return tempInput;
+          });
         }}
         required
         type="text"
@@ -35,7 +47,11 @@ function NewReviewForm({ currentUser, categories }) {
       <label>Manufacturer</label>
       <input
         onChange={(e) => {
-          setManufacturer(e.target.value);
+          setReviewInput((currentInput) => {
+            const tempInput = { ...currentInput };
+            tempInput.manufacturer = e.target.value;
+            return tempInput;
+          });
         }}
         required
         type="text"
@@ -43,14 +59,25 @@ function NewReviewForm({ currentUser, categories }) {
       <label>Review</label>
       <input
         onChange={(e) => {
-          setBody(e.target.value);
+          setReviewInput((currentInput) => {
+            const tempInput = { ...currentInput };
+            tempInput.body = e.target.value;
+            return tempInput;
+          });
         }}
+        s
         required
         type="textbox"
       ></input>
       <select
         defaultValue="selected"
-        onChange={(e) => setCategory(e.target.value)}
+        onChange={(e) => {
+          setReviewInput((currentInput) => {
+            const tempInput = { ...currentInput };
+            tempInput.category = e.target.value;
+            return tempInput;
+          });
+        }}
         required
       >
         <option value="selected" disabled={true}>

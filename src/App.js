@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "./element-components/NavBar";
 import CategoryBar from "./element-components/CategoryBar";
 import CommentsPage from "./page-components/CommentsPage";
@@ -9,8 +9,15 @@ import SignInPage from "./page-components/SignInPage";
 import NewReviewPage from "./page-components/NewReviewPage";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState("");
   const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const prevLoggedInUser = localStorage.getItem("loggedInUser");
+    if (prevLoggedInUser) {
+      setCurrentUser(prevLoggedInUser);
+    }
+  }, []);
 
   return (
     <BrowserRouter>

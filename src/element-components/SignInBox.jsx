@@ -3,7 +3,7 @@ import { getUsers } from "../utils/api";
 import { useHistory } from "react-router-dom";
 
 function SignInBox({ setCurrentUser }) {
-  const [userInput, setUserInput] = useState("");
+  const [userInput, setUserInput] = useState(null);
   const [users, setUsers] = useState([]);
   const [err, setErr] = useState(false);
 
@@ -22,6 +22,7 @@ function SignInBox({ setCurrentUser }) {
     setErr(false);
     if (users.includes(userInput)) {
       setCurrentUser(userInput);
+      localStorage.setItem("loggedInUser", userInput);
       history.push("/reviews");
     } else {
       setErr(true);
@@ -39,7 +40,7 @@ function SignInBox({ setCurrentUser }) {
       <h1>Bored? Reviews</h1>
       <h2>
         join the board game community, rate your favourite board games, leave
-        reviews and like other users reviews
+        reviews and like other allUsers reviews
       </h2>
       <form onSubmit={checkLogIn}>
         <label htmlFor="username">User: </label>

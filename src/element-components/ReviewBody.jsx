@@ -21,7 +21,6 @@ function ReviewBody({ category }) {
 
   const handleSortBy = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     setSortBy(e.target.value);
   };
 
