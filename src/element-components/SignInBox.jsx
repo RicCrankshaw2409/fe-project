@@ -1,37 +1,31 @@
-import { useState, useEffect } from "react";
-import { getUsers } from "../utils/api";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-function SignInBox({ setCurrentUser }) {
+function SignInBox({ setCurrentUser, users }) {
   const [userInput, setUserInput] = useState(null);
-  const [users, setUsers] = useState([]);
   const [err, setErr] = useState(false);
 
   const history = useHistory();
 
-  useEffect(() => {
-    getUsers().then((results) => {
-      const usernames = results.map((user) => {
-        return user.username;
-      });
-      setUsers(usernames);
-    });
-  }, []);
-
-  const checkLogIn = () => {
+  const checkLogIn = (e) => {
+    e.preventDefault();
     setErr(false);
-    if (users.includes(userInput)) {
+    const usernames = users.map((user) => {
+      return user.username;
+    });
+    if (usernames.includes(userInput)) {
       setCurrentUser(userInput);
       localStorage.setItem("loggedInUser", userInput);
       history.push("/reviews");
     } else {
       setErr(true);
     }
+    setUserInput("");
   };
 
   const needToSignUp = () => {
     if (err) {
-      return <p>User not found please sign up below</p>;
+      return <p>User not found with entered username, please try again</p>;
     }
   };
 

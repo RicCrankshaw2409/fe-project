@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { getComments } from "../utils/api";
+import { getComments, removeComment } from "../utils/api";
 
-function DisplayCommentsBox({ review_id }) {
+function DisplayCommentsBox({ review_id, currentUser }) {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
@@ -9,6 +9,12 @@ function DisplayCommentsBox({ review_id }) {
       setComments(results);
     });
   }, [review_id, comments]);
+
+  const deleteComment = (e) => {
+    e.preventDefault();
+    const comment_id = e.target.value;
+    removeComment(comment_id);
+  };
 
   return (
     <div id="comments_box">
@@ -18,6 +24,13 @@ function DisplayCommentsBox({ review_id }) {
             <h1>{comment.author}</h1>
             <p>{comment.body}</p>
             <button value={comment.comment_id}>{comment.votes}</button>
+            <button
+              value={comment.comment_id}
+              onClick={deleteComment}
+              hidden={comment.author === currentUser ? false : true}
+            >
+              Delete Comment
+            </button>
           </section>
         );
       })}

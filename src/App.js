@@ -7,15 +7,23 @@ import CommentsPage from "./page-components/CommentsPage";
 import ReviewsPage from "./page-components/ReviewsPage";
 import SignInPage from "./page-components/SignInPage";
 import NewReviewPage from "./page-components/NewReviewPage";
+import ProfilePage from "./page-components/ProfilePage";
+import { getUsers } from "./utils/api";
 
 function App() {
   const [currentUser, setCurrentUser] = useState("");
   const [categories, setCategories] = useState([]);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    getUsers().then((results) => {
+      setUsers(results);
+    });
+  }, []);
 
   useEffect(() => {
     const prevLoggedInUser = localStorage.getItem("loggedInUser");
     if (prevLoggedInUser) {
-      setCurrentUser(prevLoggedInUser);
     }
   }, []);
 
@@ -24,7 +32,11 @@ function App() {
       <div>
         <Switch>
           <Route exact path="/">
-            <SignInPage setCurrentUser={setCurrentUser} />
+            <SignInPage
+              setCurrentUser={setCurrentUser}
+              users={users}
+              setUsers={setUsers}
+            />
           </Route>
           <Route exact path="/reviews/">
             <NavBar />
@@ -32,7 +44,7 @@ function App() {
               setCategories={setCategories}
               categories={categories}
             />
-            <ReviewsPage />
+            <ReviewsPage currentUser={currentUser} />
           </Route>
           <Route exact path="/reviews/:category">
             <NavBar />
@@ -57,6 +69,10 @@ function App() {
               categories={categories}
             />
             <NewReviewPage categories={categories} currentUser={currentUser} />
+          </Route>
+          <Route exact path="/profile">
+            <NavBar />
+            <ProfilePage currentUser={currentUser} users={users} />
           </Route>
         </Switch>
       </div>

@@ -1,12 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { uploadComments } from "../utils/api";
 
 function CommentInputBox({ review_id, currentUser }) {
   const [commentInput, setCommentInput] = useState("");
-
-  console.log(commentInput);
-
-  useEffect(() => {}, [commentInput]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

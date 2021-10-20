@@ -10,7 +10,7 @@ function CommentsPage({ currentUser }) {
     <section>
       <CurrentReviewBody review_id={review_id} />
       <CommentInputBox review_id={review_id} currentUser={currentUser} />
-      <DisplayCommentsBox review_id={review_id} />
+      <DisplayCommentsBox review_id={review_id} currentUser={currentUser} />
     </section>
   );
 }

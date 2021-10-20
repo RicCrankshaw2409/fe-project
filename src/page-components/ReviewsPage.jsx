@@ -1,12 +1,12 @@
 import ReviewBody from "../element-components/ReviewBody";
 import { useParams } from "react-router";
 
-function ReviewsPage() {
+function ReviewsPage({ currentUser }) {
   const { category } = useParams();
 
   return (
     <div>
-      <ReviewBody category={category} />
+      <ReviewBody category={category} currentUser={currentUser} />
     </div>
   );
 }

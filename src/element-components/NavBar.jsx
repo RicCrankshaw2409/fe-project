@@ -1,5 +1,9 @@
 import { NavLink } from "react-router-dom";
 
+const handleSignOut = () => {
+  localStorage.removeItem("loggedInUser");
+};
+
 function NavBar() {
   return (
     <nav>
@@ -12,7 +16,13 @@ function NavBar() {
           <button>Sign-In</button>
         </NavLink>
         <NavLink to="/">
-          <button>Sign-out</button>
+          <button onClick={handleSignOut}>Sign-out</button>
+        </NavLink>
+        <NavLink to="/newreview">
+          <button>Post Review</button>
+        </NavLink>
+        <NavLink to="/profile">
+          <button>Profile</button>
         </NavLink>
       </section>
     </nav>

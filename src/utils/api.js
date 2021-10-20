@@ -90,3 +90,14 @@ export const postReview = (reviewInput, currentUser) => {
     category: `${category}`,
   });
 };
+
+export const removeComment = (comment_id) => {
+  return gamesApi
+    .delete(`/comments/${comment_id}`)
+    .then(() => {
+      console.log("comment deleted");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};

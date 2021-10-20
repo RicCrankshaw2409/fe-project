@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getReviews } from "../utils/api";
 
-function ReviewBody({ category }) {
+function ReviewBody({ category, currentUser }) {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [sortBy, setSortBy] = useState(null);
@@ -29,7 +29,6 @@ function ReviewBody({ category }) {
   return (
     <div>
       <section>
-        <Link to="/newreview">new review</Link>
         <form>
           <label htmlFor="review-sort">Sort By</label>
           <select
@@ -50,12 +49,15 @@ function ReviewBody({ category }) {
       <section>
         {reviews.map((review, index) => {
           return (
-            <div className="review-box">
-              <Link key={index} to={`/comments/${review.review_id}`}>
+            <div key={index} className="review-box">
+              <Link to={`/comments/${review.review_id}`}>
                 <p>{review.category}</p>
                 <h1>{review.title}</h1>
                 <h2>{review.owner}</h2>
                 <img src={review.review_img_url} alt="review"></img>
+                <button hidden={review.owner === currentUser ? false : true}>
+                  Delete Review
+                </button>
               </Link>
             </div>
           );
