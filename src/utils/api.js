@@ -16,8 +16,6 @@ export const getCategories = () => {
 };
 
 export const getReviews = (sortBy, category) => {
-  // category ? (path += `?category=${category}`) : null;
-
   return gamesApi
     .get("/reviews", {
       params: {
