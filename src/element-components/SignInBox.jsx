@@ -2,9 +2,8 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 function SignInBox({ setCurrentUser, users }) {
-  const [userInput, setUserInput] = useState(null);
+  const [userInput, setUserInput] = useState("");
   const [err, setErr] = useState(false);
-
   const history = useHistory();
 
   const checkLogIn = (e) => {
@@ -46,6 +45,7 @@ function SignInBox({ setCurrentUser, users }) {
           required
           type="text"
           placeholder="Guest? user = tickle122"
+          value={userInput}
         ></input>
         <button>Sign-In</button>
       </form>

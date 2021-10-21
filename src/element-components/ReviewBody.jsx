@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getReviews } from "../utils/api";
+import { getReviews, removeReview } from "../utils/api";
 
 function ReviewBody({ category, currentUser }) {
   const [reviews, setReviews] = useState([]);
@@ -9,7 +9,7 @@ function ReviewBody({ category, currentUser }) {
 
   useEffect(() => {
     setIsLoading(true);
-    getReviews(sortBy)
+    getReviews(sortBy, category)
       .then((results) => {
         setReviews(results);
         setIsLoading(false);
@@ -22,6 +22,19 @@ function ReviewBody({ category, currentUser }) {
   const handleSortBy = (e) => {
     e.preventDefault();
     setSortBy(e.target.value);
+  };
+
+  const deleteReview = async (e) => {
+    e.preventDefault();
+    const review_id = e.target.value;
+    removeReview(review_id)
+      .then(() => {
+        return getReviews(category, sortBy);
+      })
+      .then((result) => {
+        setReviews(result);
+        setIsLoading(false);
+      });
   };
 
   if (isLoading) return <p>Loading...</p>;
@@ -55,7 +68,11 @@ function ReviewBody({ category, currentUser }) {
                 <h1>{review.title}</h1>
                 <h2>{review.owner}</h2>
                 <img src={review.review_img_url} alt="review"></img>
-                <button hidden={review.owner === currentUser ? false : true}>
+                <button
+                  value={review.review_id}
+                  onClick={deleteReview}
+                  hidden={review.owner === currentUser ? false : true}
+                >
                   Delete Review
                 </button>
               </Link>

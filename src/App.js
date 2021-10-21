@@ -24,6 +24,7 @@ function App() {
   useEffect(() => {
     const prevLoggedInUser = localStorage.getItem("loggedInUser");
     if (prevLoggedInUser) {
+      setCurrentUser(prevLoggedInUser);
     }
   }, []);
 
@@ -52,7 +53,7 @@ function App() {
               setCategories={setCategories}
               categories={categories}
             />
-            <ReviewsPage />
+            <ReviewsPage currentUser={currentUser} />
           </Route>
           <Route exact path="/comments/:review_id">
             <NavBar />

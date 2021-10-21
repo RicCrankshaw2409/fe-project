@@ -19,7 +19,7 @@ export const getReviews = (sortBy, category) => {
   return gamesApi
     .get("/reviews", {
       params: {
-        category,
+        category: category,
         sort_by: sortBy,
       },
     })
@@ -57,9 +57,7 @@ export const uploadComments = (commentInput, currentUser, review_id) => {
       username: currentUser,
       body: commentInput,
     })
-    .then(() => {
-      console.log("item successfully uploaded");
-    })
+    .then(() => {})
     .catch((err) => {
       console.dir(err);
     });
@@ -75,7 +73,9 @@ export const patchReview = (review_id) => {
 export const patchComment = (comment_id) => {
   return gamesApi
     .patch(`/comments/${comment_id}`, { inc_votes: 1 })
-    .then(() => {})
+    .then((result) => {
+      console.log(result);
+    })
     .catch((err) => {});
 };
 
@@ -94,10 +94,17 @@ export const postReview = (reviewInput, currentUser) => {
 export const removeComment = (comment_id) => {
   return gamesApi
     .delete(`/comments/${comment_id}`)
-    .then(() => {
-      console.log("comment deleted");
-    })
+    .then(() => {})
     .catch((err) => {
       console.log(err);
+    });
+};
+
+export const removeReview = (review_id) => {
+  return gamesApi
+    .delete(`/reviews/${review_id}`)
+    .then(() => {})
+    .catch((err) => {
+      console.dir(err);
     });
 };
