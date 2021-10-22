@@ -13,7 +13,13 @@ const handleSignOut = () => {
 
 function NavBar() {
   return (
-    <Navbar collapseOnSelect bg="dark" variant="dark" expand="sm">
+    <Navbar
+      id="primary-navbar"
+      collapseOnSelect
+      bg="dark"
+      variant="dark"
+      expand="sm"
+    >
       <Container fluid>
         <Row>
           <Col>
@@ -29,7 +35,7 @@ function NavBar() {
             />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav>
-                <Nav.Link href="/reviews">Home</Nav.Link>
+                <Nav.Link href="/reviews">All Reviews</Nav.Link>
                 <Nav.Link href="/newreview">Post Review</Nav.Link>
                 <Nav.Link href="/" onClick={handleSignOut}>
                   Sign-out

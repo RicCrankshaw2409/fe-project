@@ -14,8 +14,9 @@
   padding: 0;
 }
 
-.navbar-toggler-icon {
+#hamburger-menu:focus {
   border: none;
+  box-shadow: none;
 }
 
 #brand {
@@ -35,7 +36,7 @@
 }
 
 .show {
-  padding-top: 40px;
+  padding-top: 30px;
 }
 
 .collapsing a {

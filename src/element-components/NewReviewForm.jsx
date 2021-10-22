@@ -13,6 +13,8 @@ function NewReviewForm({ currentUser, categories }) {
   const [submitNewReview, setSubmitNewReview] = useState(false);
   const [err, setErr] = useState(false);
 
+  console.log(submitNewReview);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setReviewInput({
@@ -32,11 +34,11 @@ function NewReviewForm({ currentUser, categories }) {
 
   return (
     <section>
-      <form hidden={submitNewReview ? true : false} onSubmit={handleSubmit}>
+      <form disabled={submitNewReview ? true : false} onSubmit={handleSubmit}>
         <h1>New Review</h1>
         <label>Review Title</label>
         <input
-          hidden={submitNewReview ? true : false}
+          disabled={submitNewReview ? true : false}
           onChange={(e) => {
             setReviewInput((currentInput) => {
               const tempInput = { ...currentInput };
@@ -50,7 +52,7 @@ function NewReviewForm({ currentUser, categories }) {
         ></input>
         <label>Image (URL)</label>
         <input
-          hidden={submitNewReview ? true : false}
+          disabled={submitNewReview ? true : false}
           onChange={(e) => {
             setReviewInput((currentInput) => {
               const tempInput = { ...currentInput };
@@ -64,7 +66,7 @@ function NewReviewForm({ currentUser, categories }) {
         ></input>
         <label>Manufacturer</label>
         <input
-          hidden={submitNewReview ? true : false}
+          disabled={submitNewReview ? true : false}
           onChange={(e) => {
             setReviewInput((currentInput) => {
               const tempInput = { ...currentInput };
@@ -78,7 +80,7 @@ function NewReviewForm({ currentUser, categories }) {
         ></input>
         <label>Review</label>
         <input
-          hidden={submitNewReview ? true : false}
+          disabled={submitNewReview ? true : false}
           onChange={(e) => {
             setReviewInput((currentInput) => {
               const tempInput = { ...currentInput };
@@ -91,7 +93,7 @@ function NewReviewForm({ currentUser, categories }) {
           value={reviewInput.body}
         ></input>
         <select
-          hidden={submitNewReview ? true : false}
+          disabled={submitNewReview ? true : false}
           defaultValue="selected"
           onChange={(e) => {
             setReviewInput((currentInput) => {
@@ -113,7 +115,7 @@ function NewReviewForm({ currentUser, categories }) {
             );
           })}
         </select>
-        <button hidden={submitNewReview ? true : false}>Submit</button>
+        <button disabled={submitNewReview ? true : false}>Submit</button>
       </form>
       {submitNewReview & !err ? (
         <div>

@@ -27,6 +27,8 @@ function App() {
     }
   }, []);
 
+  console.log(currentUser);
+
   return (
     <BrowserRouter>
       <div>

@@ -1,0 +1,67 @@
+#sortby-form {
+  margin-top: 60px;
+  margin-left: 10px;
+  justify-content: flex-end;
+  width: 180px;
+}
+
+#review-cards {
+  margin: 0px 15px 15px 15px;
+}
+
+#review-card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  height: 800px;
+  overflow: scroll;
+  width: 75vw;
+  margin-right: 0;
+}
+
+#individual-card {
+  margin: 10px;
+  border: solid 1px #6f8fa3;
+}
+
+#card-header {
+  height: 65px;
+  color: white;
+  font-weight: 700;
+  background-color: #6f8fa3;
+}
+
+#review-icon {
+  color: #6f8fa3;
+  margin-left: 5px;
+}
+
+#review-header {
+  text-align: center;
+  color: black;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+#header-logo {
+  font-size: 30px;
+}
+
+#review-body {
+  height: 48px;
+  color: #032336;
+}
+
+#review-link {
+  text-decoration: none;
+}
+
+#review-logo-left {
+  color: #6f8fa3;
+}
+
+#post-review-prompt a {
+  color: black;
+}
