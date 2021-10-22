@@ -12,9 +12,7 @@ function ProfileTag({ currentUser, users }) {
 
   return (
     <div>
-      <p>{profileUser.username}</p>
-      <p>{profileUser.name}</p>
-      <img src={profileUser.avatar_url} alt="profile avatar"></img>
+      <p>Signed in as: {profileUser.username}</p>
     </div>
   );
 }

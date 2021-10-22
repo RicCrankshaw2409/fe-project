@@ -1,3 +1,12 @@
-.nav {
-  justify-content: space-between;
+#secondary-nav {
+  justify-content: center;
+  background-color: #6f8fa3;
+}
+
+#secondary-nav a {
+  color: white;
+}
+
+#secondary-nav a:hover {
+  color: rgba(255, 255, 255, 0.601);
 }

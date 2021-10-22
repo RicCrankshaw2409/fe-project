@@ -19,8 +19,8 @@ function NavBar() {
           <Col>
             <Navbar.Brand id="brand" href="/reviews">
               <span id="left-brand">Bored?</span> Reviews
+              <FontAwesomeIcon id="icon" icon={faChessKnight} />
             </Navbar.Brand>
-            <FontAwesomeIcon id="icon" icon={faChessKnight} />
           </Col>
           <Col className="second-col">
             <Navbar.Toggle
