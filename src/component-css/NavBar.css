@@ -1,0 +1,46 @@
+.row {
+  width: 100%;
+}
+
+#icon {
+  color: #6f8fa3;
+  height: 20px;
+  width: 16px;
+}
+
+#brand {
+  margin-right: 5px;
+}
+
+#left-brand {
+  color: #6f8fa3;
+}
+
+.row a {
+  margin-left: 10px;
+}
+
+.second-col button {
+  float: right;
+}
+
+.show {
+  padding-top: 40px;
+}
+
+.collapsing a {
+  display: none;
+}
+
+.collapse {
+  font-size: 14px;
+  justify-content: flex-end;
+}
+
+.navbar-nav a {
+  text-align: right;
+}
+
+col {
+  margin: auto;
+}

@@ -5,14 +5,9 @@ const gamesApi = axios.create({
 });
 
 export const getCategories = () => {
-  return gamesApi
-    .get("/categories")
-    .then((response) => {
-      return response.data.categories;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  return gamesApi.get("/categories").then((response) => {
+    return response.data.categories;
+  });
 };
 
 export const getReviews = (sortBy, category) => {
@@ -25,9 +20,6 @@ export const getReviews = (sortBy, category) => {
     })
     .then((response) => {
       return response.data.reviews;
-    })
-    .catch((err) => {
-      console.dir(err);
     });
 };
 
@@ -37,10 +29,8 @@ export const getComments = (review_id) => {
   });
 };
 
-export const getCurrentReview = (review_id, createdReviewId) => {
-  let path;
-  createdReviewId ? (path = createdReviewId) : (path = review_id);
-  return gamesApi.get(`reviews/${path}`).then((response) => {
+export const getCurrentReview = (review_id) => {
+  return gamesApi.get(`reviews/${review_id}`).then((response) => {
     return response.data.review;
   });
 };
@@ -57,10 +47,7 @@ export const uploadComments = (commentInput, currentUser, review_id) => {
       username: currentUser,
       body: commentInput,
     })
-    .then(() => {})
-    .catch((err) => {
-      console.dir(err);
-    });
+    .then(() => {});
 };
 
 export const patchReview = (review_id) => {

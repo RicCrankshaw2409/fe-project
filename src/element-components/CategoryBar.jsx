@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { getCategories } from "../utils/api";
-import { Link } from "react-router-dom";
+import "../component-css/CategoryBar.css";
+import Nav from "react-bootstrap/Nav";
 
 function CategoryBar({ setCategories, categories }) {
   useEffect(() => {
@@ -10,15 +11,15 @@ function CategoryBar({ setCategories, categories }) {
   }, [setCategories]);
 
   return (
-    <section>
+    <Nav>
       {categories.map((category, index) => {
         return (
-          <Link key={index} to={`/reviews/${category.slug}`}>
+          <Nav.Link key={index} href={`/reviews/${category.slug}`}>
             {category.slug}
-          </Link>
+          </Nav.Link>
         );
       })}
-    </section>
+    </Nav>
   );
 }
 

@@ -2,12 +2,3 @@ img {
   width: 200px;
   height: 200px;
 }
-
-nav {
-  display: inline-block;
-  background-color: azure;
-}
-
-#navbuttons {
-  display: inline-block;
-}

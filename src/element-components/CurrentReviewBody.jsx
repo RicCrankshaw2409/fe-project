@@ -1,30 +1,34 @@
 import { useEffect, useState } from "react";
 import { getCurrentReview, patchReview } from "../utils/api";
+import { errorMsg } from "../utils/helper-functions";
+import { LoadingIcon } from "../bootstrap-components/LoadingIcon";
 
-function CurrentReview({ review_id, createdReviewId }) {
-  const [isLoading, setIsLoading] = useState(true);
+function CurrentReview({ review_id }) {
+  const [isLoading, setIsLoading] = useState(false);
   const [currentReview, setCurrentReview] = useState({});
   const [newReviewLikes, setNewReviewLikes] = useState(0);
+  const [err, setErr] = useState(false);
 
   useEffect(() => {
+    setErr(false);
     setIsLoading(true);
-    getCurrentReview(review_id, createdReviewId)
+    getCurrentReview(review_id)
       .then((results) => {
         setCurrentReview(results);
         setIsLoading(false);
       })
       .catch((err) => {
-        console.dir(err);
+        setErr(true);
       });
-  }, [review_id, createdReviewId]);
+  }, [review_id]);
 
   const likeReview = () => {
     setNewReviewLikes((newReviewLikes) => newReviewLikes + 1);
     patchReview(review_id);
   };
 
-  if (isLoading)
-    return <p hidden={createdReviewId ? false : true}>Loading...</p>;
+  if (isLoading) return LoadingIcon();
+  else if (err) return errorMsg;
 
   return (
     <div id="current_review_body">
@@ -34,7 +38,7 @@ function CurrentReview({ review_id, createdReviewId }) {
       <p>{currentReview.review_body}</p>
       <img src={currentReview.review_img_url} alt="review"></img>
       <p>{currentReview.created_at}</p>
-      <button hidden={createdReviewId ? true : false} onClick={likeReview}>
+      <button onClick={likeReview}>
         Kudos: {currentReview.votes + newReviewLikes}
       </button>
     </div>

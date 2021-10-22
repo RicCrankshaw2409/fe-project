@@ -1,4 +1,11 @@
-import { NavLink } from "react-router-dom";
+import "../component-css/NavBar.css";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChessKnight } from "@fortawesome/free-solid-svg-icons";
 
 const handleSignOut = () => {
   localStorage.removeItem("loggedInUser");
@@ -6,26 +13,33 @@ const handleSignOut = () => {
 
 function NavBar() {
   return (
-    <nav>
-      <h1>Bored? Reviews</h1>
-      <section id="nav-buttons">
-        <NavLink to="/reviews">
-          <button>Home</button>
-        </NavLink>
-        <NavLink to="/">
-          <button>Sign-In</button>
-        </NavLink>
-        <NavLink to="/">
-          <button onClick={handleSignOut}>Sign-out</button>
-        </NavLink>
-        <NavLink to="/newreview">
-          <button>Post Review</button>
-        </NavLink>
-        <NavLink to="/profile">
-          <button>Profile</button>
-        </NavLink>
-      </section>
-    </nav>
+    <Navbar collapseOnSelect bg="dark" variant="dark" expand="sm">
+      <Container fluid>
+        <Row>
+          <Col>
+            <Navbar.Brand id="brand" href="/reviews">
+              <span id="left-brand">Bored?</span> Reviews
+            </Navbar.Brand>
+            <FontAwesomeIcon id="icon" icon={faChessKnight} />
+          </Col>
+          <Col className="second-col">
+            <Navbar.Toggle
+              id="hamburger-menu"
+              aria-controls="offcanvasNavbar"
+            />
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav>
+                <Nav.Link href="/reviews">Home</Nav.Link>
+                <Nav.Link href="/newreview">Post Review</Nav.Link>
+                <Nav.Link href="/" onClick={handleSignOut}>
+                  Sign-out
+                </Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Col>
+        </Row>
+      </Container>
+    </Navbar>
   );
 }
 

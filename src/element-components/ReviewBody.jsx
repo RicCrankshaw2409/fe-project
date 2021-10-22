@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getReviews, removeReview } from "../utils/api";
+import { LoadingIcon } from "../bootstrap-components/LoadingIcon";
 
-function ReviewBody({ category, currentUser }) {
+function ReviewBody({ category, currentUser, setErr }) {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [sortBy, setSortBy] = useState(null);
 
   useEffect(() => {
+    setErr(false);
     setIsLoading(true);
     getReviews(sortBy, category)
       .then((results) => {
@@ -15,9 +17,9 @@ function ReviewBody({ category, currentUser }) {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        setErr(true);
       });
-  }, [category, sortBy]);
+  }, [category, sortBy, setErr]);
 
   const handleSortBy = (e) => {
     e.preventDefault();
@@ -37,7 +39,7 @@ function ReviewBody({ category, currentUser }) {
       });
   };
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return LoadingIcon();
 
   return (
     <div>

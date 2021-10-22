@@ -4,8 +4,10 @@ import { getComments } from "../utils/api";
 
 function CommentInputBox({ review_id, currentUser, comments, setComments }) {
   const [commentInput, setCommentInput] = useState("");
+  const [err, setErr] = useState(false);
 
   const handleSubmit = (e) => {
+    setErr(false);
     e.preventDefault();
     setCommentInput("");
     uploadComments(commentInput, currentUser, review_id)
@@ -14,6 +16,9 @@ function CommentInputBox({ review_id, currentUser, comments, setComments }) {
       })
       .then((result) => {
         setComments(result);
+      })
+      .catch(() => {
+        setErr(true);
       });
   };
 
@@ -34,6 +39,9 @@ function CommentInputBox({ review_id, currentUser, comments, setComments }) {
         ></input>
         <button>Submit</button>
       </form>
+      <div>
+        {err ? <p>Error comment not uploaded, please try again..</p> : null}
+      </div>
     </div>
   );
 }

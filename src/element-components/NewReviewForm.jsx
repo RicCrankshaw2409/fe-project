@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { postReview } from "../utils/api";
+import { Link } from "react-router-dom";
 
-function NewReviewForm({ currentUser, categories, setCreatedReviewId }) {
+function NewReviewForm({ currentUser, categories }) {
   const [reviewInput, setReviewInput] = useState({
     title: "",
     image: "",
@@ -9,7 +10,8 @@ function NewReviewForm({ currentUser, categories, setCreatedReviewId }) {
     body: "",
     category: null,
   });
-  const [displayNewReview, setDisplayNewReview] = useState(false);
+  const [submitNewReview, setSubmitNewReview] = useState(false);
+  const [err, setErr] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,21 +23,20 @@ function NewReviewForm({ currentUser, categories, setCreatedReviewId }) {
       category: null,
     });
     postReview(reviewInput, currentUser)
-      .then((result) => {
-        setCreatedReviewId(result.data.review.review_id);
-        setDisplayNewReview(true);
-      })
+      .then((result) => {})
       .catch((err) => {
-        console.dir(err);
+        setErr(true);
       });
+    setSubmitNewReview(true);
   };
 
   return (
     <section>
-      <form onSubmit={handleSubmit}>
+      <form hidden={submitNewReview ? true : false} onSubmit={handleSubmit}>
         <h1>New Review</h1>
         <label>Review Title</label>
         <input
+          hidden={submitNewReview ? true : false}
           onChange={(e) => {
             setReviewInput((currentInput) => {
               const tempInput = { ...currentInput };
@@ -49,6 +50,7 @@ function NewReviewForm({ currentUser, categories, setCreatedReviewId }) {
         ></input>
         <label>Image (URL)</label>
         <input
+          hidden={submitNewReview ? true : false}
           onChange={(e) => {
             setReviewInput((currentInput) => {
               const tempInput = { ...currentInput };
@@ -62,6 +64,7 @@ function NewReviewForm({ currentUser, categories, setCreatedReviewId }) {
         ></input>
         <label>Manufacturer</label>
         <input
+          hidden={submitNewReview ? true : false}
           onChange={(e) => {
             setReviewInput((currentInput) => {
               const tempInput = { ...currentInput };
@@ -75,6 +78,7 @@ function NewReviewForm({ currentUser, categories, setCreatedReviewId }) {
         ></input>
         <label>Review</label>
         <input
+          hidden={submitNewReview ? true : false}
           onChange={(e) => {
             setReviewInput((currentInput) => {
               const tempInput = { ...currentInput };
@@ -87,6 +91,7 @@ function NewReviewForm({ currentUser, categories, setCreatedReviewId }) {
           value={reviewInput.body}
         ></input>
         <select
+          hidden={submitNewReview ? true : false}
           defaultValue="selected"
           onChange={(e) => {
             setReviewInput((currentInput) => {
@@ -108,15 +113,26 @@ function NewReviewForm({ currentUser, categories, setCreatedReviewId }) {
             );
           })}
         </select>
-        <button>Submit</button>
+        <button hidden={submitNewReview ? true : false}>Submit</button>
       </form>
-      {displayNewReview ? (
+      {submitNewReview & !err ? (
         <div>
+          <img
+            src="https://images.unsplash.com/photo-1494178270175-e96de2971df9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHN1Y2Nlc3N8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+            alt="successful upload"
+          ></img>
           <p>{reviewInput.title}</p>
-          <img src={reviewInput.image} alt={"board-game"}></img>
-          <p>{reviewInput.body}</p>
-          <p>{reviewInput.category}</p>
-          <p>{reviewInput.manufacturer}</p>
+          <p>
+            Review Submitted - Check it out at{" "}
+            <Link to={"/reviews"}>Reviews</Link> or Submit Another{" "}
+            <Link
+              onClick={() => {
+                window.location.reload();
+              }}
+            >
+              Review
+            </Link>
+          </p>
         </div>
       ) : null}
     </section>

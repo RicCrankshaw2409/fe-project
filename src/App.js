@@ -7,7 +7,6 @@ import CommentsPage from "./page-components/CommentsPage";
 import ReviewsPage from "./page-components/ReviewsPage";
 import SignInPage from "./page-components/SignInPage";
 import NewReviewPage from "./page-components/NewReviewPage";
-import ProfilePage from "./page-components/ProfilePage";
 import { getUsers } from "./utils/api";
 
 function App() {
@@ -70,10 +69,6 @@ function App() {
               categories={categories}
             />
             <NewReviewPage categories={categories} currentUser={currentUser} />
-          </Route>
-          <Route exact path="/profile">
-            <NavBar />
-            <ProfilePage currentUser={currentUser} users={users} />
           </Route>
         </Switch>
       </div>
