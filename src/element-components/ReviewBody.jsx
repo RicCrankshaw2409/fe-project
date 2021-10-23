@@ -35,7 +35,7 @@ function ReviewBody({ category, currentUser, setErr }) {
 
   const deleteReview = async (e) => {
     e.preventDefault();
-    const review_id = e.target.value;
+    const review_id = e.currentTarget.value;
     removeReview(review_id)
       .then(() => {
         return getReviews(category, sortBy);
@@ -49,7 +49,7 @@ function ReviewBody({ category, currentUser, setErr }) {
   if (isLoading) return LoadingIcon();
 
   return (
-    <div id="review-body">
+    <div className="review-body">
       <section>
         <Form.Select
           id="sortby-form"
@@ -57,7 +57,7 @@ function ReviewBody({ category, currentUser, setErr }) {
           onChange={handleSortBy}
         >
           <option value="selected" disabled={true}>
-            Sort-Reviews-By
+            Sort-Reviews
           </option>
           <option value="created_at">Date</option>
           <option value="comment_count">Comments</option>
@@ -103,6 +103,7 @@ function ReviewBody({ category, currentUser, setErr }) {
                     <ListGroupItem>
                       {review.category}{" "}
                       <button
+                        id="delete-button"
                         value={review.review_id}
                         onClick={deleteReview}
                         hidden={review.owner === currentUser ? false : true}

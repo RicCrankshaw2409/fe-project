@@ -1,8 +1,47 @@
 #signin-box {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 #signin-heading {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
+  font-size: 3rem;
+  color: #28536c;
+  font-family: "Arvo", serif;
+  border-bottom: solid 0.5px #28536c;
+}
+
+#header-logo {
+  margin-bottom: 40px;
+}
+
+#signin-msg {
+  width: 75vw;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #28536c;
+  padding-bottom: 15px;
+}
+
+#msg-container {
+  display: flex;
+  justify-content: center;
+}
+
+#username {
+  width: 50vw;
+}
+
+#signin-submit-form {
+  display: flex;
+  justify-content: center;
+}
+
+#sigin-prompt {
+  display: block;
+}
+
+#form-submit-btn {
+  background-color: #28536c;
+  border: none;
 }

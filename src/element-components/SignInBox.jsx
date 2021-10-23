@@ -35,16 +35,18 @@ function SignInBox({ setCurrentUser, users }) {
 
   return (
     <section id="signin-box">
-      <h1 id="signin-heading">Welcome !</h1>
-      <p id="header-logo">
+      <p className="fadeInDown" id="header-logo">
         <span id="review-logo-left">Bored?</span> Reviews
         <FontAwesomeIcon id="review-icon" icon={faChessKnight} />
       </p>
-      <h2>
-        join the board game community, rate your favourite board games, leave
-        reviews and like other users reviews
-      </h2>
-      <Form onSubmit={checkLogIn}>
+      <p id="signin-heading">Welcome </p>
+      <div id="msg-container">
+        <p id="signin-msg">
+          Join the board game community. Review your favourite board games and
+          interact with other board-game addicts.
+        </p>
+      </div>
+      <Form id="signin-submit-form" onSubmit={checkLogIn}>
         <Form.Control
           id="username"
           onChange={(e) => {
@@ -55,11 +57,13 @@ function SignInBox({ setCurrentUser, users }) {
           placeholder="username"
           value={userInput}
         ></Form.Control>
-        <Form.Text className="text-muted">
-          Guest ? username = Tickle122
-        </Form.Text>
-        <Button type="submit">Sign-In</Button>
+        <Button id="form-submit-btn" type="submit">
+          Sign-In
+        </Button>
       </Form>
+      <p id="signin-prompt" className="text-muted">
+        Guest ? username = tickle122
+      </p>
       <div>{needToSignUp()}</div>
     </section>
   );

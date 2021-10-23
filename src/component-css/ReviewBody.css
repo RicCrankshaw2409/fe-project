@@ -1,8 +1,13 @@
+.review-body {
+  color: #032336;
+}
+
 #sortby-form {
   margin-top: 60px;
   margin-left: 10px;
   justify-content: flex-end;
-  width: 180px;
+  width: 190px;
+  font-weight: 700;
 }
 
 #review-cards {
@@ -17,13 +22,14 @@
   text-align: center;
   height: 800px;
   overflow: scroll;
-  width: 75vw;
+  /* width: 75vw; */
   margin-right: 0;
 }
 
 #individual-card {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.4);
   margin: 10px;
-  border: solid 1px #6f8fa3;
+  border: solid 0.5px #6f8fa3;
 }
 
 #card-header {
@@ -40,7 +46,7 @@
 
 #review-header {
   text-align: center;
-  color: black;
+  color: #6f8fa3;
   font-weight: 700;
   font-size: 18px;
 }
@@ -64,4 +70,10 @@
 
 #post-review-prompt a {
   color: black;
+}
+
+#delete-button {
+  background-color: transparent;
+  border: none;
+  padding-left: 50px;
 }

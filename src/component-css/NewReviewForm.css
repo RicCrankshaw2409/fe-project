@@ -1,0 +1,20 @@
+.NewFormReview {
+  text-align: center;
+  color: #032336;
+}
+
+#nr-form-container {
+  position: relative;
+  display: block;
+  /* border: solid 1px #6f8fa3; */
+  width: 75vw;
+  margin: auto;
+  padding: 30px;
+  margin-top: 50px;
+}
+
+#nr-brand {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}

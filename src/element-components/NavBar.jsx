@@ -35,7 +35,7 @@ function NavBar() {
             />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav>
-                <Nav.Link href="/reviews">All Reviews</Nav.Link>
+                <Nav.Link href="/reviews">Reviews</Nav.Link>
                 <Nav.Link href="/newreview">Post Review</Nav.Link>
                 <Nav.Link href="/" onClick={handleSignOut}>
                   Sign-out

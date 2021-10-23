@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import { getCategories } from "../utils/api";
 import Nav from "react-bootstrap/Nav";
 import NavBar from "react-bootstrap/NavBar";
 import Container from "react-bootstrap/Container";
@@ -7,13 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import "../component-css/CategoryBar.css";
 
-function CategoryBar({ setCategories, categories }) {
-  useEffect(() => {
-    getCategories().then((results) => {
-      setCategories(results);
-    });
-  }, [setCategories]);
-
+function CategoryBar({ categories }) {
   return (
     <NavBar id="secondary-navbar" collapseOnSelect expand="lg">
       <Container id="secondary-nav-container">

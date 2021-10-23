@@ -7,12 +7,18 @@ import CommentsPage from "./page-components/CommentsPage";
 import ReviewsPage from "./page-components/ReviewsPage";
 import SignInPage from "./page-components/SignInPage";
 import NewReviewPage from "./page-components/NewReviewPage";
-import { getUsers } from "./utils/api";
+import { getUsers, getCategories } from "./utils/api";
 
 function App() {
   const [currentUser, setCurrentUser] = useState("");
   const [categories, setCategories] = useState([]);
   const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    getCategories().then((results) => {
+      setCategories(results);
+    });
+  }, [setCategories]);
 
   useEffect(() => {
     getUsers().then((results) => {
@@ -27,8 +33,6 @@ function App() {
     }
   }, []);
 
-  console.log(currentUser);
-
   return (
     <BrowserRouter>
       <div>
@@ -42,34 +46,21 @@ function App() {
           </Route>
           <Route exact path="/reviews/">
             <NavBar />
-            <CategoryBar
-              setCategories={setCategories}
-              categories={categories}
-            />
+            <CategoryBar categories={categories} />
             <ReviewsPage currentUser={currentUser} />
           </Route>
           <Route exact path="/reviews/:category">
             <NavBar />
-            <CategoryBar
-              setCategories={setCategories}
-              categories={categories}
-            />
+            <CategoryBar categories={categories} />
             <ReviewsPage currentUser={currentUser} />
           </Route>
           <Route exact path="/comments/:review_id">
             <NavBar />
-            <CategoryBar
-              setCategories={setCategories}
-              categories={categories}
-            />
-            <CommentsPage currentUser={currentUser} />
+            <CategoryBar categories={categories} />
+            <CommentsPage currentUser={currentUser} categories={categories} />
           </Route>
           <Route exact path="/newreview">
             <NavBar />
-            <CategoryBar
-              setCategories={setCategories}
-              categories={categories}
-            />
             <NewReviewPage categories={categories} currentUser={currentUser} />
           </Route>
         </Switch>
