@@ -15,7 +15,7 @@ function SignInBox({ setCurrentUser, users }) {
     e.preventDefault();
     setErr(false);
     const usernames = users.map((user) => {
-      return user.username;
+      return user;
     });
     if (usernames.includes(userInput)) {
       setCurrentUser(userInput);

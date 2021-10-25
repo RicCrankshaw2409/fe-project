@@ -90,3 +90,11 @@ export const removeReview = (review_id) => {
       console.dir(err);
     });
 };
+
+export const getProfile = (currentUser) => {
+  return gamesApi.get(`/users`).then((results) => {
+    return results.filter((user) => {
+      return user.username === currentUser;
+    });
+  });
+};

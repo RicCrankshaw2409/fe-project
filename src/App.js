@@ -46,17 +46,29 @@ function App() {
           </Route>
           <Route exact path="/reviews/">
             <NavBar />
-            <CategoryBar categories={categories} />
+            <CategoryBar
+              currentUser={currentUser}
+              users={users}
+              categories={categories}
+            />
             <ReviewsPage currentUser={currentUser} />
           </Route>
           <Route exact path="/reviews/:category">
             <NavBar />
-            <CategoryBar categories={categories} />
+            <CategoryBar
+              currentUser={currentUser}
+              users={users}
+              categories={categories}
+            />
             <ReviewsPage currentUser={currentUser} />
           </Route>
           <Route exact path="/comments/:review_id">
             <NavBar />
-            <CategoryBar categories={categories} />
+            <CategoryBar
+              users={users}
+              currentUser={currentUser}
+              categories={categories}
+            />
             <CommentsPage currentUser={currentUser} categories={categories} />
           </Route>
           <Route exact path="/newreview">

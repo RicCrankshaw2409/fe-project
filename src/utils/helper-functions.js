@@ -9,3 +9,10 @@ export const errorMsg = () => {
     </div>
   );
 };
+
+export const getProfile = (username, users) => {
+  const filterUser = users.filter((user) => {
+    return user.username === username;
+  });
+  return filterUser;
+};

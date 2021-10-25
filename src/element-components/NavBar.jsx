@@ -29,10 +29,7 @@ function NavBar() {
             </Navbar.Brand>
           </Col>
           <Col className="second-col">
-            <Navbar.Toggle
-              id="hamburger-menu"
-              aria-controls="offcanvasNavbar"
-            />
+            <Navbar.Toggle id="hamburger-menu" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav>
                 <Nav.Link href="/reviews">Reviews</Nav.Link>

@@ -7,7 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 
-function CommentsPage({ currentUser, setIsLoading }) {
+function CommentsPage({ currentUser }) {
   const [comments, setComments] = useState([]);
 
   const { review_id } = useParams();
@@ -17,10 +17,7 @@ function CommentsPage({ currentUser, setIsLoading }) {
       <Container id="comments-page-container">
         <Row>
           <Col md={7}>
-            <CurrentReviewBody
-              setIsLoading={setIsLoading}
-              review_id={review_id}
-            />
+            <CurrentReviewBody review_id={review_id} />
           </Col>
           <Col id="cp-col2" md={5}>
             <CommentInputBox
@@ -28,14 +25,12 @@ function CommentsPage({ currentUser, setIsLoading }) {
               currentUser={currentUser}
               comments={comments}
               setComments={setComments}
-              setIsLoading={setIsLoading}
             />
             <DisplayCommentsBox
               review_id={review_id}
               currentUser={currentUser}
               comments={comments}
               setComments={setComments}
-              setIsLoading={setIsLoading}
             />
           </Col>
         </Row>

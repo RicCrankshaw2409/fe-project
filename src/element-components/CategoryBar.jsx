@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import "../component-css/CategoryBar.css";
 
-function CategoryBar({ categories }) {
+function CategoryBar({ categories, currentUser }) {
   return (
     <NavBar id="secondary-navbar" collapseOnSelect expand="lg">
       <Container id="secondary-nav-container">
@@ -34,6 +34,7 @@ function CategoryBar({ categories }) {
             })}
           </Nav>
         </NavBar.Collapse>
+        <small id="profile-username">Signed in as : {currentUser}</small>
       </Container>
     </NavBar>
   );

@@ -27,14 +27,9 @@ function NewReviewForm({ currentUser, categories, setIsLoading }) {
       body: "",
       category: null,
     });
-    postReview(reviewInput, currentUser);
-    setIsLoading(true)
-      .then((result) => {
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        setErr(true);
-      });
+    postReview(reviewInput, currentUser).catch((err) => {
+      setErr(true);
+    });
     setSubmitNewReview(true);
   };
 

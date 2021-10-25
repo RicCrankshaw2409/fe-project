@@ -11,7 +11,7 @@ function DisplayCommentsBox({
   currentUser,
   comments,
   setComments,
-  setIsLoading,
+  isLoading,
 }) {
   const [newLikes, setNewLikes] = useState(0);
   const [currentCommentId, setCurrentCommentId] = useState(0);
