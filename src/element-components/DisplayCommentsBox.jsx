@@ -2,13 +2,20 @@ import { useState, useEffect } from "react";
 import { getComments, removeComment } from "../utils/api";
 import { patchComment } from "../utils/api";
 import { errorMsg } from "../utils/helper-functions";
+import "../component-css/CommentDisplayBox.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
-function DisplayCommentsBox({ review_id, currentUser, comments, setComments }) {
+function DisplayCommentsBox({
+  review_id,
+  currentUser,
+  comments,
+  setComments,
+  setIsLoading,
+}) {
   const [newLikes, setNewLikes] = useState(0);
-  const [currentCommentId, setCurrentCommentId] = useState(1);
+  const [currentCommentId, setCurrentCommentId] = useState(0);
   const [err, setErr] = useState(false);
-
-  console.log(currentCommentId);
 
   useEffect(() => {
     setErr(false);
@@ -19,11 +26,13 @@ function DisplayCommentsBox({ review_id, currentUser, comments, setComments }) {
       .catch((err) => {
         setErr(true);
       });
-  }, [review_id, setComments, newLikes]);
+  }, [review_id, setComments]);
 
   const deleteComment = (e) => {
     e.preventDefault();
-    const comment_id = e.target.value;
+    const comment_id = e.currentTarget.value;
+    console.log(comment_id);
+
     removeComment(comment_id)
       .then(() => {
         return getComments(review_id);
@@ -44,24 +53,32 @@ function DisplayCommentsBox({ review_id, currentUser, comments, setComments }) {
   if (err) return errorMsg();
 
   return (
-    <div id="comments_box">
+    <div id="comments-box">
+      <p id="comments-box-heading">Comments</p>
       {comments.map((comment, index) => {
         return (
-          <section key={index}>
-            <h1>{comment.author}</h1>
-            <p>{comment.body}</p>
-            <button onClick={likeComment} value={comment.comment_id}>
+          <section id="comment-container" key={index}>
+            <p id="dc-heading">{comment.author}</p>
+            <p id="dc-comment-body">{comment.body}</p>
+            <button
+              id="dc-star"
+              onClick={likeComment}
+              value={comment.comment_id}
+            >
               ⭐️
+            </button>
+            <p id="like-value">
               {currentCommentId === comment.comment_id
                 ? comment.votes + newLikes
                 : comment.votes}
-            </button>
+            </p>
             <button
+              id="dc-delete"
               value={comment.comment_id}
               onClick={deleteComment}
               hidden={comment.author === currentUser ? false : true}
             >
-              Delete Comment
+              <FontAwesomeIcon id="review-icon" icon={faTrashAlt} />
             </button>
           </section>
         );

@@ -67,7 +67,7 @@ function ReviewBody({ category, currentUser, setErr }) {
       <section id="review-cards">
         <div id="review-header">
           <p id="header-logo">
-            <span id="review-logo-left">Bored?</span> Reviews
+            Bored? <span id="review-logo-right">Reviews</span>
             <FontAwesomeIcon id="review-icon" icon={faChessKnight} />
           </p>
           <p id="review-description">
@@ -82,10 +82,13 @@ function ReviewBody({ category, currentUser, setErr }) {
         <div id="review-card-container">
           {reviews.map((review, index) => {
             return (
-              <Link id="review-link" to={`/comments/${review.review_id}`}>
+              <Link
+                key={index}
+                id="review-link"
+                to={`/comments/${review.review_id}`}
+              >
                 <Card
                   style={{ width: "300px" }}
-                  key={index}
                   className="review-box"
                   id="individual-card"
                 >
@@ -109,6 +112,7 @@ function ReviewBody({ category, currentUser, setErr }) {
                         hidden={review.owner === currentUser ? false : true}
                       >
                         <FontAwesomeIcon id="review-icon" icon={faTrashAlt} />
+                        <small>delete review</small>
                       </button>
                     </ListGroupItem>
                   </ListGroup>
@@ -117,7 +121,6 @@ function ReviewBody({ category, currentUser, setErr }) {
             );
           })}
         </div>
-        {/* </div> */}
       </section>
     </div>
   );

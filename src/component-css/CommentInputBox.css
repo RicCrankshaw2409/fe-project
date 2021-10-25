@@ -1,0 +1,42 @@
+.accordion {
+  margin-bottom: 40px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.4);
+}
+
+.accordion-button {
+  height: 35px;
+  background-color: rgba(78, 123, 149, 0.3);
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.4);
+  border: none;
+  font-weight: 600;
+  color: #113951;
+  font-family: sans-serif;
+  padding: 0px 0px 0px 10px;
+}
+
+.accordion-button.collapsed {
+  background-color: rgba(78, 123, 149, 0.3);
+  color: #113951;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: rgba(78, 123, 149, 0.3) !important;
+  color: #113951;
+}
+
+.accordion-collapse.show {
+  height: 150px;
+  padding: 0px;
+}
+
+#ci-submit {
+  width: 100%;
+  background-color: rgba(78, 123, 149, 0.3);
+  color: #113951;
+  font-weight: 700;
+  border: solid 0.5px #6f8fa3;
+}
+
+#ci-submit:hover {
+  background-color: rgba(255, 137, 25, 0.8);
+}

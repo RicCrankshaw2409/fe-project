@@ -13,7 +13,14 @@
 
 #secondary-navbar a {
   color: white;
+  font-weight: 700;
+  transition: color 3ms;
 }
+
+#secondary-navbar a:hover {
+  color: #113951;
+}
+
 span {
   font-weight: 700;
 }
@@ -39,16 +46,12 @@ span {
   padding-top: 5px;
 }
 
+#categories-label {
+  color: #113951;
+}
+
 .show #categories-label {
   display: none;
-}
-
-#secondary-nav a {
-  font-weight: 700;
-}
-
-#secondary-nav a:hover {
-  color: rgba(255, 255, 255, 0.601);
 }
 
 @media screen and (max-width: 991px) {

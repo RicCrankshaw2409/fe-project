@@ -1,0 +1,167 @@
+#comments-page-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#current-review-body {
+  position: relative;
+  text-align: center;
+  border: 1px solid #1139514d;
+  border-radius: 5px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.4);
+  padding: 15px;
+  margin-top: 20px;
+  background-color: rgba(78, 123, 149, 0.3);
+  color: #113951;
+}
+
+@media (max-width: 576px) {
+  .row {
+    width: 100vw;
+  }
+
+  #cr-heading {
+    margin-top: 50px;
+  }
+
+  #cp-col2 {
+    margin-top: 30px !important;
+  }
+
+  #current-review-body {
+    width: 100%;
+    padding: 0px;
+    overflow: scroll;
+    font-size: 14px;
+    height: 70vh;
+  }
+
+  #cr-main-body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow-y: scroll;
+  }
+
+  #cr-body {
+    display: block;
+    height: 200px;
+    border: none;
+  }
+
+  .container {
+    padding-left: 0px;
+  }
+
+  .cr-image {
+    align-self: center;
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 576px) {
+  #cr-heading {
+    margin-top: 60px;
+  }
+
+  #cr-title {
+    font-size: 0.8em;
+  }
+
+  #current-main-body {
+    overflow: hidden;
+  }
+
+  #cr-body {
+    border-top: 1px solid #6f8fa3;
+  }
+
+  #cr-img {
+    float: right;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-right: 5px;
+  }
+
+  #cr-info {
+    display: block;
+  }
+
+  #cr-date #cr-like {
+    display: block;
+  }
+  #cp-col2 {
+    margin-top: 20px;
+  }
+
+  .accordion-collapse {
+    height: 100%;
+  }
+}
+
+#cr-heading {
+  color: #ff8919;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#cr-title {
+  text-transform: uppercase;
+  font-size: calc(0.75em + 1vw);
+  border-radius: 5px;
+  color: #113951;
+  font-weight: 700;
+  font-size: calc(1.5rem - 1px);
+  padding-top: 10px;
+}
+
+#cr-main-body {
+  border: 0.5px solid rgba(17, 57, 81, 0.3);
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+  height: 90%;
+}
+
+#cr-body {
+  height: auto;
+  text-align: left;
+  font-weight: 400;
+  font-size: 1rem;
+  margin-top: 10px;
+  line-height: 1.2;
+  padding: 15px;
+}
+
+#cr-info {
+  position: relative;
+  border-radius: 10px;
+  font-weight: 800;
+  width: 100%;
+  background-color: white;
+}
+
+#cr-like {
+  background-color: transparent;
+  border: none;
+}
+
+#cr-owner {
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+#cr-votecount {
+  font-size: 20px;
+}
+
+.like {
+  color: #4267b2;
+  height: 40px;
+  width: 40px;
+  border-radius: 15px;
+  background-color: white;
+  border: 0.5px solid rgba(17, 57, 81, 0.3);
+}

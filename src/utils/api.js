@@ -42,19 +42,14 @@ export const getUsers = () => {
 };
 
 export const uploadComments = (commentInput, currentUser, review_id) => {
-  return gamesApi
-    .post(`/reviews/${review_id}/comments`, {
-      username: currentUser,
-      body: commentInput,
-    })
-    .then(() => {});
+  return gamesApi.post(`/reviews/${review_id}/comments`, {
+    username: currentUser,
+    body: commentInput,
+  });
 };
 
-export const patchReview = (review_id) => {
-  return gamesApi
-    .patch(`/reviews/${review_id}`, { inc_votes: 1 })
-    .then(() => {})
-    .catch((err) => {});
+export const patchReview = (review_id, incVotes) => {
+  return gamesApi.patch(`/reviews/${review_id}`, { inc_votes: incVotes });
 };
 
 export const patchComment = (comment_id) => {

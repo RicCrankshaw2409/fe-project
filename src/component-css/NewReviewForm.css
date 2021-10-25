@@ -1,9 +1,9 @@
 .NewFormReview {
   text-align: center;
-  color: #032336;
 }
 
 #nr-form-container {
+  color: #032336;
   position: relative;
   display: block;
   /* border: solid 1px #6f8fa3; */
@@ -17,4 +17,10 @@
   position: absolute;
   left: 0px;
   top: 0px;
+}
+
+#nr-heading {
+  font-family: "Arvo", serif;
+  margin-top: 50px;
+  font-size: 22px;
 }

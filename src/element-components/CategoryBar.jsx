@@ -23,7 +23,11 @@ function CategoryBar({ categories }) {
             <NavBar.Text id="categories-label">Review Categories :</NavBar.Text>
             {categories.map((category, index) => {
               return (
-                <Nav.Link key={index} href={`/reviews/${category.slug}`}>
+                <Nav.Link
+                  className="secondary-navlinks"
+                  key={index}
+                  href={`/reviews/${category.slug}`}
+                >
                   {category.slug}
                 </Nav.Link>
               );

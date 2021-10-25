@@ -6,12 +6,12 @@
 #signin-heading {
   margin-bottom: 40px;
   font-size: 3rem;
-  color: #28536c;
+  color: #ff8919;
   font-family: "Arvo", serif;
   border-bottom: solid 0.5px #28536c;
 }
 
-#header-logo {
+#si-header-logo {
   margin-bottom: 40px;
 }
 
@@ -42,6 +42,6 @@
 }
 
 #form-submit-btn {
-  background-color: #28536c;
+  background-color: #ff8919;
   border: none;
 }

@@ -7,7 +7,7 @@ import "../component-css/NewReviewForm.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChessKnight } from "@fortawesome/free-solid-svg-icons";
 
-function NewReviewForm({ currentUser, categories }) {
+function NewReviewForm({ currentUser, categories, setIsLoading }) {
   const [reviewInput, setReviewInput] = useState({
     title: "",
     image: "",
@@ -18,8 +18,6 @@ function NewReviewForm({ currentUser, categories }) {
   const [submitNewReview, setSubmitNewReview] = useState(false);
   const [err, setErr] = useState(false);
 
-  console.log(submitNewReview);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setReviewInput({
@@ -29,8 +27,11 @@ function NewReviewForm({ currentUser, categories }) {
       body: "",
       category: null,
     });
-    postReview(reviewInput, currentUser)
-      .then((result) => {})
+    postReview(reviewInput, currentUser);
+    setIsLoading(true)
+      .then((result) => {
+        setIsLoading(false);
+      })
       .catch((err) => {
         setErr(true);
       });
@@ -38,8 +39,8 @@ function NewReviewForm({ currentUser, categories }) {
   };
 
   return (
-    <section class="NewFormReview">
-      <h1>Enter you review below !</h1>
+    <section className="NewFormReview">
+      <p id="nr-heading">Enter you review below</p>
       <Form disabled={submitNewReview ? true : false} onSubmit={handleSubmit}>
         <Form.Group>
           <div id="nr-form-container">
@@ -142,7 +143,7 @@ function NewReviewForm({ currentUser, categories }) {
           <p>{reviewInput.title}</p>
           <p>
             Review Submitted - Check it out at{" "}
-            <Link to={"/reviews"}>Reviews</Link> or Submit Another{" "}
+            <Link href="/reviews">Reviews</Link> or Submit Another{" "}
             <Link
               onClick={() => {
                 window.location.reload();

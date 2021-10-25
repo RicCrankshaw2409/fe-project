@@ -22,7 +22,7 @@
   text-align: center;
   height: 800px;
   overflow: scroll;
-  /* width: 75vw; */
+  overflow-y: scroll;
   margin-right: 0;
 }
 
@@ -39,8 +39,12 @@
   background-color: #6f8fa3;
 }
 
+#card-header:hover {
+  color: #113951;
+}
+
 #review-icon {
-  color: #6f8fa3;
+  color: #ff8919;
   margin-left: 5px;
 }
 
@@ -48,11 +52,12 @@
   text-align: center;
   color: #6f8fa3;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 #header-logo {
-  font-size: 30px;
+  display: inline-block;
+  font-size: 40px;
 }
 
 #review-body {
@@ -64,8 +69,9 @@
   text-decoration: none;
 }
 
-#review-logo-left {
-  color: #6f8fa3;
+#review-logo-right {
+  color: #032336;
+  font-weight: 400;
 }
 
 #post-review-prompt a {
@@ -76,4 +82,18 @@
   background-color: transparent;
   border: none;
   padding-left: 50px;
+}
+
+@media (max-width: 576px) {
+  #header-logo {
+    margin-bottom: 0px;
+  }
+
+  #cr-main-body {
+    height: 90%;
+  }
+
+  #review-description {
+    margin-bottom: 0px;
+  }
 }

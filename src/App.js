@@ -22,7 +22,7 @@ function App() {
 
   useEffect(() => {
     getUsers().then((results) => {
-      setUsers(results);
+      return setUsers(results);
     });
   }, []);
 

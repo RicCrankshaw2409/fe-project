@@ -35,7 +35,7 @@ function SignInBox({ setCurrentUser, users }) {
 
   return (
     <section id="signin-box">
-      <p className="fadeInDown" id="header-logo">
+      <p className="fadeInDown" id="si-header-logo">
         <span id="review-logo-left">Bored?</span> Reviews
         <FontAwesomeIcon id="review-icon" icon={faChessKnight} />
       </p>
