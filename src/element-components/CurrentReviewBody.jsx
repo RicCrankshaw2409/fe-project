@@ -67,13 +67,17 @@ function CurrentReview({ review_id }) {
             <p id="cr-owner">{currentReview.owner}</p>
             <div id="cr-info">
               <button
-                className="like dis"
+                className={voted ? "liked" : "like"}
                 disabled={voted}
                 onClick={likeReview}
               >
                 <FontAwesomeIcon id="thumbs-up" icon={faThumbsUp} />
               </button>
-              <button className="like" disabled={voted} onClick={dislikeReview}>
+              <button
+                className={voted ? "liked" : "like"}
+                disabled={voted}
+                onClick={dislikeReview}
+              >
                 <FontAwesomeIcon id="thumbs-down" icon={faThumbsDown} />
               </button>
               <p id="cr-votecount">
