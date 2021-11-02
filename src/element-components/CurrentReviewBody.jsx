@@ -10,10 +10,10 @@ function CurrentReview({ review_id }) {
   const [newReviewLikes, setNewReviewLikes] = useState(0);
   const [voted, setVoted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [err, setErr] = useState(false);
+  // const [err, setErr] = useState(false);
 
   useEffect(() => {
-    setErr(false);
+    // setErr(false);
     setIsLoading(true);
     getCurrentReview(review_id)
       .then((results) => {
@@ -21,7 +21,7 @@ function CurrentReview({ review_id }) {
         setIsLoading(false);
       })
       .catch((err) => {
-        setErr(true);
+        // setErr(true);
       });
   }, [review_id, setIsLoading]);
 
@@ -59,7 +59,11 @@ function CurrentReview({ review_id }) {
               alt="review"
             ></img>
             <p id="cr-body">{currentReview.review_body}</p>
-            <p id="cr-date">{currentReview.created_at}</p>
+            <p id="cr-date">
+              {new Date(currentReview.created_at).toLocaleDateString("en-GB", {
+                timeZone: "UTC",
+              })}
+            </p>
             <p id="cr-owner">{currentReview.owner}</p>
             <div id="cr-info">
               <button

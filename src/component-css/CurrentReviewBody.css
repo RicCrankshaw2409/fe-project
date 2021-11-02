@@ -6,7 +6,6 @@
 #current-review-body {
   position: relative;
   text-align: center;
-  border: 1px solid #1139514d;
   border-radius: 5px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.4);
   padding: 15px;
@@ -117,7 +116,6 @@
 }
 
 #cr-main-body {
-  border: 0.5px solid rgba(17, 57, 81, 0.3);
   border-radius: 10px;
   padding: 10px;
   background-color: white;
@@ -163,5 +161,4 @@
   width: 40px;
   border-radius: 15px;
   background-color: white;
-  border: 0.5px solid rgba(17, 57, 81, 0.3);
 }

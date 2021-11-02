@@ -15,10 +15,8 @@ function ReviewBody({ category, currentUser, setErr }) {
   const [isLoading, setIsLoading] = useState(true);
   const [sortBy, setSortBy] = useState(null);
 
-  console.log(isLoading);
-
   useEffect(() => {
-    setErr(false);
+    // setErr(false);
     setIsLoading(true);
     getReviews(sortBy, category)
       .then((results) => {
@@ -26,7 +24,7 @@ function ReviewBody({ category, currentUser, setErr }) {
         setIsLoading(false);
       })
       .catch((err) => {
-        setErr(true);
+        // setErr(true);
       });
   }, [category, sortBy, setErr]);
 

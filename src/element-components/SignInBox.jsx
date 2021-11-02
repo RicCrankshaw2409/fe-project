@@ -11,11 +11,13 @@ function SignInBox({ setCurrentUser, users }) {
   const [err, setErr] = useState(false);
   const history = useHistory();
 
+  console.log(userInput);
+
   const checkLogIn = (e) => {
     e.preventDefault();
     setErr(false);
     const usernames = users.map((user) => {
-      return user;
+      return user.username;
     });
     if (usernames.includes(userInput)) {
       setCurrentUser(userInput);

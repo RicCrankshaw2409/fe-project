@@ -43,8 +43,10 @@ function NewReviewForm({ currentUser, categories, setIsLoading }) {
               <span id="review-logo-left">Bored?</span> Reviews
               <FontAwesomeIcon id="review-icon" icon={faChessKnight} />
             </p>
-            <Form.Label>Review Title</Form.Label>
+            {/* <Form.Label>Review Title</Form.Label> */}
             <Form.Control
+              placeholder="Review Title......"
+              className="pl-10 mb-3"
               disabled={submitNewReview ? true : false}
               onChange={(e) => {
                 setReviewInput((currentInput) => {
@@ -57,8 +59,10 @@ function NewReviewForm({ currentUser, categories, setIsLoading }) {
               type="text"
               value={reviewInput.title}
             ></Form.Control>
-            <Form.Label>Image (URL)</Form.Label>
+            {/* <Form.Label>Image (URL)</Form.Label> */}
             <Form.Control
+              className="pl-10 mb-3"
+              placeholder="Image URL......"
               disabled={submitNewReview ? true : false}
               onChange={(e) => {
                 setReviewInput((currentInput) => {
@@ -71,8 +75,10 @@ function NewReviewForm({ currentUser, categories, setIsLoading }) {
               type="text"
               value={reviewInput.image}
             ></Form.Control>
-            <Form.Label>Board Game</Form.Label>
+            {/* <Form.Label>Board Game</Form.Label> */}
             <Form.Control
+              className="pl-10 mb-3"
+              placeholder="Board Game Name......"
               disabled={submitNewReview ? true : false}
               onChange={(e) => {
                 setReviewInput((currentInput) => {
@@ -85,8 +91,10 @@ function NewReviewForm({ currentUser, categories, setIsLoading }) {
               type="text"
               value={reviewInput.manufacturer}
             ></Form.Control>
-            <Form.Label>Review</Form.Label>
+            {/* <Form.Label>Review</Form.Label> */}
             <Form.Control
+              className="pl-10 mb-3"
+              placeholder="Review......"
               disabled={submitNewReview ? true : false}
               onChange={(e) => {
                 setReviewInput((currentInput) => {
@@ -97,10 +105,11 @@ function NewReviewForm({ currentUser, categories, setIsLoading }) {
               }}
               required
               as="textarea"
-              rows={3}
+              rows={6}
               value={reviewInput.body}
             ></Form.Control>
             <Form.Select
+              className="pl-10 mb-3"
               disabled={submitNewReview ? true : false}
               defaultValue="selected"
               onChange={(e) => {
@@ -123,7 +132,12 @@ function NewReviewForm({ currentUser, categories, setIsLoading }) {
                 );
               })}
             </Form.Select>
-            <Button type="submit" disabled={submitNewReview ? true : false}>
+            <Button
+              id="new-review-btn"
+              className="mt-20"
+              type="submit"
+              disabled={submitNewReview ? true : false}
+            >
               Submit
             </Button>
           </div>

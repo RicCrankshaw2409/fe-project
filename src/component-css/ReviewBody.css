@@ -43,7 +43,10 @@
 #individual-card {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.4);
   margin: 10px;
-  border: solid 0.5px #6f8fa3;
+}
+
+#individual-card:hover {
+  opacity: 0.8;
 }
 
 #card-header {
