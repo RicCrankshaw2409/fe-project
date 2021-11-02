@@ -21,17 +21,55 @@ function CategoryBar({ categories, currentUser }) {
         <NavBar.Collapse id="responsive-navbar-nav-cat">
           <Nav id="navbar-nav">
             <NavBar.Text id="categories-label">Review Categories :</NavBar.Text>
-            {categories.map((category, index) => {
-              return (
-                <Nav.Link
-                  className="secondary-navlinks"
-                  key={index}
-                  href={`/reviews/${category.slug}`}
-                >
-                  {category.slug}
-                </Nav.Link>
-              );
-            })}
+            <Nav.Link
+              className="secondary-navlinks"
+              key="1"
+              href={`/reviews/strategy`}
+            >
+              Strategy
+            </Nav.Link>
+            <Nav.Link
+              className="secondary-navlinks"
+              key="2"
+              href={`/reviews/hidden-roles`}
+            >
+              Hidden-Roles
+            </Nav.Link>
+            <Nav.Link
+              className="secondary-navlinks"
+              key="3"
+              href={`/reviews/dexterity`}
+            >
+              Dexterity
+            </Nav.Link>
+            <Nav.Link
+              className="secondary-navlinks"
+              key="4"
+              href={`/reviews/push-your-luck`}
+            >
+              Push Your Luck
+            </Nav.Link>
+            <Nav.Link
+              className="secondary-navlinks"
+              key="5"
+              href={`/reviews/roll-and-write`}
+            >
+              Roll And Write
+            </Nav.Link>
+            <Nav.Link
+              className="secondary-navlinks"
+              key="6"
+              href={`/reviews/deck-building`}
+            >
+              Deck Building
+            </Nav.Link>
+            <Nav.Link
+              className="secondary-navlinks"
+              key="7"
+              href={`/reviews/engine-building`}
+            >
+              Engine Building
+            </Nav.Link>
           </Nav>
         </NavBar.Collapse>
         <small id="profile-username">Signed in as : {currentUser}</small>
