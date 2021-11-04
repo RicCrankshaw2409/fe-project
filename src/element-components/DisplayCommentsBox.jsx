@@ -1,20 +1,11 @@
 import { useState, useEffect } from "react";
 import { getComments, removeComment } from "../utils/api";
-import { patchComment } from "../utils/api";
 import { errorMsg } from "../utils/helper-functions";
 import "../component-css/CommentDisplayBox.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
-function DisplayCommentsBox({
-  review_id,
-  currentUser,
-  comments,
-  setComments,
-  isLoading,
-}) {
-  const [newLikes, setNewLikes] = useState(0);
-  const [currentCommentId, setCurrentCommentId] = useState(0);
+function DisplayCommentsBox({ review_id, currentUser, comments, setComments }) {
   const [err, setErr] = useState(false);
 
   useEffect(() => {
@@ -42,14 +33,6 @@ function DisplayCommentsBox({
       });
   };
 
-  const likeComment = (e) => {
-    setCurrentCommentId(e.target.value);
-    setNewLikes((currentLikes) => {
-      setNewLikes(currentLikes + 1);
-    });
-    patchComment(currentCommentId);
-  };
-
   if (err) return errorMsg();
 
   return (
@@ -60,18 +43,7 @@ function DisplayCommentsBox({
           <section id="comment-container" key={index}>
             <p id="dc-heading">{comment.author}</p>
             <p id="dc-comment-body">{comment.body}</p>
-            <button
-              id="dc-star"
-              onClick={likeComment}
-              value={comment.comment_id}
-            >
-              ⭐️
-            </button>
-            <p id="like-value">
-              {currentCommentId === comment.comment_id
-                ? comment.votes + newLikes
-                : comment.votes}
-            </p>
+
             <button
               id="dc-delete"
               value={comment.comment_id}

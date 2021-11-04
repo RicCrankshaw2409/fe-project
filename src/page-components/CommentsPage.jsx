@@ -9,7 +9,6 @@ import Container from "react-bootstrap/Container";
 
 function CommentsPage({ currentUser }) {
   const [comments, setComments] = useState([]);
-
   const { review_id } = useParams();
 
   return (
