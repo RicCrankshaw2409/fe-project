@@ -1,5 +1,5 @@
 import Nav from "react-bootstrap/Nav";
-import NavBar from "react-bootstrap/NavBar";
+import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
@@ -7,9 +7,9 @@ import "../component-css/CategoryBar.css";
 
 function CategoryBar({ categories, currentUser }) {
   return (
-    <NavBar id="secondary-navbar" collapseOnSelect expand="lg">
+    <Navbar id="secondary-navbar" collapseOnSelect expand="lg">
       <Container id="secondary-nav-container">
-        <NavBar.Toggle
+        <Navbar.Toggle
           id="navbar-toggler"
           aria-controls="responsive-navbar-nav"
         >
@@ -17,10 +17,10 @@ function CategoryBar({ categories, currentUser }) {
             Select Review Category
             <FontAwesomeIcon id="icon" icon={faBars} />
           </span>
-        </NavBar.Toggle>
-        <NavBar.Collapse id="responsive-navbar-nav-cat">
+        </Navbar.Toggle>
+        <Navbar.Collapse id="responsive-navbar-nav-cat">
           <Nav id="navbar-nav">
-            <NavBar.Text id="categories-label">Review Categories :</NavBar.Text>
+            <Navbar.Text id="categories-label">Review Categories :</Navbar.Text>
             <Nav.Link
               className="secondary-navlinks"
               key="1"
@@ -71,10 +71,10 @@ function CategoryBar({ categories, currentUser }) {
               Engine Building
             </Nav.Link>
           </Nav>
-        </NavBar.Collapse>
+        </Navbar.Collapse>
         <small id="profile-username">Signed in as : {currentUser}</small>
       </Container>
-    </NavBar>
+    </Navbar>
   );
 }
 
