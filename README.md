@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+#Bored-Reviews Front-end project 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<u><b>[Link to React application ](https://fe-bored-reviews.herokuapp.com/)</b></u>
+<u><b>[Link to Board Games API](https://nc-board-games.herokuapp.com/api)</b></u>
 
-## Available Scripts
+## <u>Overview</u>
 
-In the project directory, you can run:
+Hello and welcome to Bored-Reviews. Bored-Revies is a React app links to an API I previously created and can be found here (<b>[API](https://fe-bored-reviews.herokuapp.com/)</b>). This project was built during my time as a student at NorthCoders. The application was built using React components and HTML for the structure and has been styled using CSS and components from Bootstrap-React library. The application has been hosted with Heroku.
 
-### `npm start`
+## <u>Learning objectives</u>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This project will provide a pratical example of designing, creating and deploying a application using React. The project is aimed at improving my undestanding of the following topics;
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Designing a website with the use of wireframe - for this project excalidraw was used.
+- Creating a react appliction using npx.
+- Designing components, laying them out in an order and accessible structure.
+- Using hooks and state within React, to develop a responsive user experience.
+- Using props to pass down React states to components.
+- Use React-Router-Dom including BrwoserRouter, Links, Route and Switch to link components.
+- Using CSS and libraries such as Bootstrap-React to style application.
+- Deploying a React application on Heroku.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## <u>Local Development Set-up</u>
 
-### `npm run build`
+You can build a dev version of this site using a few simple commands. Please ensure you have Node.js and Git installed on your local machine.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Clone the repo using the below command;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+git clone `https://github.com/RicCrankshaw2409/fe-project.git`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Then install the dependencies to your local machine by running the following commands in terminal:
 
-### `npm run eject`
+cd nc-games
+npm install
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Once installation is complete run the below command to start the application;
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+npm start
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+It will automatically load the website to your default browser, or you can manually access it by visiting localhost:3000.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Enjoy !
