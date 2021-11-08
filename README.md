@@ -36,6 +36,7 @@ Clone the repo using the below command;
 Then install the dependencies to your local machine by running the following commands in terminal:
 
 `cd nc-games`
+<br></br>
 `npm install`
 
 Once installation is complete run the below command to start the application;
