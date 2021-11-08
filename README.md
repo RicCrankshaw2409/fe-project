@@ -1,4 +1,4 @@
-<h1>Bored-Reviews Front-end project</h1>
+<h1>Bored? Reviews Front-end project</h1>
 
 <u><b>[Bored? Reviews App](https://fe-bored-reviews.herokuapp.com/)</b></u>
 <br></br>
