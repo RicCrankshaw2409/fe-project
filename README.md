@@ -1,8 +1,8 @@
-#Bored-Reviews Front-end project
+<h1>Bored-Reviews Front-end project</h1>
 
-<u><b>[Link to React application ](https://fe-bored-reviews.herokuapp.com/)</b></u>
+<u><b>[Bored? Reviews App](https://fe-bored-reviews.herokuapp.com/)</b></u>
 <br></br>
-<u><b>[Link to Board Games API](https://nc-board-games.herokuapp.com/api)</b></u>
+<u><b>[Link to Bored? Reviews API](https://nc-board-games.herokuapp.com/api)</b></u>
 
 ## <u>Overview</u>
 
